@@ -1,10 +1,11 @@
+import "./ItemCost.css";
 function ItemCost() {
   return (
-    <div>
+    <div className="cost-item">
       <div>Март 2012</div>
-      <div>
+      <div className="cost-item__description">
         <h2>Холодильник</h2>
-        <div>120$</div>
+        <div className="cost-item__price">120$</div>
       </div>
     </div>
   );

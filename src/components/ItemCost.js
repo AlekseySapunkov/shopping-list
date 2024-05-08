@@ -1,5 +1,6 @@
 import "./ItemCost.css";
 function ItemCost() {
+  const costDate = new Date(2024, );
   return (
     <div className="cost-item">
       <div>Март 2012</div>

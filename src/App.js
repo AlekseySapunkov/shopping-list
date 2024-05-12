@@ -1,4 +1,4 @@
-import ItemCost from "./components/ItemCost";
+import Costs from "./components/Costs";
 function App() {
   const costs = [
     {
@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <h1>"Начнем изучение react"</h1>
-        <Costs/>
+        <Costs costs={costs}/>
     </div>
   );
 }

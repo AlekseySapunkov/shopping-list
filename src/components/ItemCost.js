@@ -1,7 +1,7 @@
 import "./ItemCost.css";
 function ItemCost(props) {
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
-  const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
+  const day = props.date.toLocaleString("ru-Ru", { day: "long" });
   const year = props.date.toLocaleString("ru-Ru", { year: "2-digit" });
   const costTitle = props.price;
   const title = props.description;

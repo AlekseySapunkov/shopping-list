@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <h1>"Начнем изучение react"</h1>
-        <Costs costs={costs}/>
+        <Costs prices={costs}/>
     </div>
   );
 }

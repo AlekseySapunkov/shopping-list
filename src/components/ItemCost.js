@@ -1,4 +1,6 @@
 import "./ItemCost.css";
+import Card from "./Card";
+
 function ItemCost(props) {
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
@@ -6,7 +8,7 @@ function ItemCost(props) {
   const costTitle = props.price;
   const title = props.description;
   return (
-    <div className="cost-item">
+    <Card className="cost-item">
       <div className="cost-date">
         <div cost-date__day>{day}</div>
         <div className="cost-date__month">{month}</div>
@@ -16,7 +18,7 @@ function ItemCost(props) {
         <h2>{title}</h2>
         <div className="cost-item__price">{costTitle}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 export default ItemCost;

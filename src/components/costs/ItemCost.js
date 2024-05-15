@@ -1,7 +1,7 @@
 import "./ItemCost.css";
-import Card from "./Card";
+import Card from "../UI/Card";
 
-function ItemCost(props) {
+const ItemCost = (props) => {
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
   const year = props.date.toLocaleString("ru-Ru", { year: "2-digit" });
@@ -20,5 +20,5 @@ function ItemCost(props) {
       </div>
     </Card>
   );
-}
+};
 export default ItemCost;

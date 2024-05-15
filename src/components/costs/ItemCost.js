@@ -1,12 +1,17 @@
 import "./ItemCost.css";
 import Card from "../UI/Card";
+import React, { useState } from "react";
 
 const ItemCost = (props) => {
+  const [description, setDescription] = useState(props.description);
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
   const year = props.date.toLocaleString("ru-Ru", { year: "2-digit" });
   const costTitle = props.price;
-  const title = props.description;
+  const changeDescriptionHandler = () => {
+    setDescription("New Text");
+    alert(description);
+  };
   return (
     <Card className="cost-item">
       <div className="cost-date">
@@ -15,9 +20,10 @@ const ItemCost = (props) => {
         <div className="cost-date__year">{year}</div>
       </div>
       <div className="cost-item__description">
-        <h2>{title}</h2>
+        <h2>{description}</h2>
         <div className="cost-item__price">{costTitle}</div>
       </div>
+      <button onClick={changeDescriptionHandler}>Изменить описание</button>
     </Card>
   );
 };

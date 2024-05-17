@@ -1,7 +1,7 @@
 import "./NewCost.css"
 import CostForm  from "./CostForm"
 const NewCost = () => {
-return <div>
+return <div className="new-cost">
     <CostForm></CostForm>
 </div>
 }

@@ -18,9 +18,12 @@ const App = () => {
       price: 920,
     },
   ];
+  const onAddCostHandler =(cost)=>{
+    console.log(cost);
+  }
   return (
     <div>
-      <NewCost/>
+      <NewCost onAddCost= {onAddCostHandler}/>
       <Costs prices={costs} />
     </div>
   );

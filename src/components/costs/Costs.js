@@ -10,19 +10,21 @@ const Costs = (props) => {
   };
   console.log(props.costs)
   console.log(props.costs.map((cost)=>cost.date.getUTCFullYear()))
-  const newArr= props.costs.filter((cost)=>cost.date.getUTCFullYear()==selectedYear)
-  console.log(newArr)
+  const filterProps= (props)=>{
+   return  props.costs.filter((cost)=>cost.date.getUTCFullYear().toString()===selectedYear)}
   console.log(selectedYear)
   return (
     <div>
       <Card className="costs">
         <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
-        {props.costs.filter((cost)=>cost.date.getUTCFullYear().toString()===selectedYear).map((cost)=> 
+        {filterProps(props).length===0?<p>в массиве нет элементов</p>:
+        filterProps(props).map((cost)=> 
         <ItemCost
          key={cost.id}
         date={cost.date}
           description={cost.description}
           price={cost.price}/>)}
+        
       </Card>
     </div>
   );

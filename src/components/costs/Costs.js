@@ -8,8 +8,6 @@ const Costs = (props) => {
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
-  console.log(props.costs)
-  console.log(props.costs.map((cost)=>cost.date.getUTCFullYear()))
   const filterProps= (props)=>{
    return  props.costs.filter((cost)=>cost.date.getUTCFullYear().toString()===selectedYear)}
   console.log(selectedYear)

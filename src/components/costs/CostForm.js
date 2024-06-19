@@ -42,6 +42,7 @@ const CostForm = (props) => {
             </div>
             <div className="new-cost__actions"> 
 <button type ="submit">Добавить расход</button>
+<button type ="button">отмена</button>
             </div>
             </div>
     </form>

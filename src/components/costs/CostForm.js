@@ -26,6 +26,10 @@ const CostForm = (props) => {
         setDate('');
         setAmount('');
     }
+    const onClickCancelHandler =()=>{
+        console.log(props)
+    }
+  
     return <form onSubmit={submitHandler}>
          <div className="new-cost__controls">
          <div className="new-cost__control">
@@ -42,7 +46,7 @@ const CostForm = (props) => {
             </div>
             <div className="new-cost__actions"> 
 <button type ="submit">Добавить расход</button>
-<button type ="button">отмена</button>
+<button type ="button" onClick={onClickCancelHandler}>отмена</button>
             </div>
             </div>
     </form>

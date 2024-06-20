@@ -4,6 +4,7 @@ const CostForm = (props) => {
     const [description, setName] = useState('');
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
+    const [formVisible, setFormVisible] = useState(props.CostFormValue)
     const nameChangeHandler =(event)=>{
         setName(event.target.value)
     };
@@ -27,7 +28,9 @@ const CostForm = (props) => {
         setAmount('');
     }
     const onClickCancelHandler =()=>{
+        setFormVisible(false)
         console.log(props)
+        props.onSaveCost()
     }
   
     return <form onSubmit={submitHandler}>

@@ -8,7 +8,7 @@ return (<div className="diagram-bar">
 <div className="diagram-bar__inner">
     <div className="diagram-bar__fill" style={{height : barFillLine}}></div>
 </div>
-<div className="diagram-bar__label"></div>
+<div className="diagram-bar__label"><p>{props.label}</p></div>
     </div>)
 }
 export default DiagramBar;

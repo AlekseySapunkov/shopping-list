@@ -23,11 +23,16 @@ const CostForm = (props) => {
             price:amount,
         }
         console.log(costData);
+        if(event.target.value.trim() > 0){
+            setInputValid(true)
+        }
         if(description.trim().length === 0 || amount===0){
+            setInputValid(false)
             alert('поле название не заполнено ')
             return
         } else if(amount.length===0){
             alert('не указана цена товара!')
+            setInputValid(false)
             return
         }
         props.onSaveCost(costData);
@@ -46,11 +51,11 @@ const CostForm = (props) => {
          <div className="new-cost__controls">
          <div className="new-cost__control">
                 <label>Название</label>
-                <input type="text" onChange={nameChangeHandler} value={description}/>
+                <input type="text" onChange={nameChangeHandler} value={description} style={{borderBlockColor: isInputValid ? "black":"red"}}/>
             </div>
             <div className="new-cost__control">
             <label>Сумма</label>
-                <input type="number" min="0.01" step="0.01" onChange={amountChangeHandler} value={amount}/>
+                <input type="number" min="0.01" step="0.01" onChange={amountChangeHandler} value={amount} style={{borderBlockColor: isInputValid ? "black":"red"}}/>
             </div>
             <div className="new-cost__control">
             <label>Дата</label>

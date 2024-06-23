@@ -5,6 +5,7 @@ const CostForm = (props) => {
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
     const [formVisible, setFormVisible] = useState(props.CostFormValue)
+    const [isInputValid, setInputValid] = useState(true)
     const nameChangeHandler =(event)=>{
         setName(event.target.value)
     };
@@ -22,6 +23,13 @@ const CostForm = (props) => {
             price:amount,
         }
         console.log(costData);
+        if(description.trim().length === 0 || amount===0){
+            alert('поле название не заполнено ')
+            return
+        } else if( amount===0){
+            alert('не указана цена товара!')
+            return
+        }
         props.onSaveCost(costData);
         setName('');
         setDate('');
@@ -31,6 +39,7 @@ const CostForm = (props) => {
         setFormVisible(false)
         console.log(props)
         props.onSaveCost()
+        console.log(formVisible)
     }
   
     return <form onSubmit={submitHandler}>

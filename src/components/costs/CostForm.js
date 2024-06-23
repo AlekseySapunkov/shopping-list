@@ -26,7 +26,7 @@ const CostForm = (props) => {
         if(description.trim().length === 0 || amount===0){
             alert('поле название не заполнено ')
             return
-        } else if( amount===0){
+        } else if(amount.length===0){
             alert('не указана цена товара!')
             return
         }

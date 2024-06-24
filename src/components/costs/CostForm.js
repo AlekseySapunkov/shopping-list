@@ -1,3 +1,4 @@
+import Button from "./Button";
 import "./CostForm.css"
 import React, {useState} from "react";
 const CostForm = (props) => {
@@ -23,7 +24,7 @@ const CostForm = (props) => {
             price:amount,
         }
         console.log(costData);
-        if(event.target.value.trim() > 0){
+        if(event.target.value > 0){
             setInputValid(true)
         }
         if(description.trim().length === 0 || amount===0){
@@ -62,8 +63,8 @@ const CostForm = (props) => {
                 <input type="date" min="0.01" step="0.01" onChange={dateChangeHandler} value={date}/>
             </div>
             <div className="new-cost__actions"> 
-<button type ="submit">Добавить расход</button>
-<button type ="button" onClick={onClickCancelHandler}>отмена</button>
+<Button type ="submit">Добавить расход</Button>
+<Button type ="button" onClick={onClickCancelHandler}>отмена</Button>
             </div>
             </div>
     </form>

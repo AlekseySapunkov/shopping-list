@@ -1,6 +1,7 @@
 import "./NewCost.css"
 import CostForm  from "./CostForm"
 import React, {useState} from "react"
+import Button from "./Button";
 const NewCost = (props) => {
   const [value, setValue] = useState(props.value);
   const [isFormVisible, setFormVisible] = useState(false)
@@ -29,7 +30,7 @@ const NewCost = (props) => {
   }
   if(value === true && isFormVisible === false){
     return <div className="new-cost">
-  <button type ="button" onClick={buttonClickHandler} value = {value}>Добавить новый расход</button>
+  <Button type ="button" onClick={buttonClickHandler} value = {value}>Добавить новый расход</Button>
 </div>
 }else{
   return <div className="new-cost">

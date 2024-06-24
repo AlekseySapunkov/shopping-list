@@ -1,6 +1,7 @@
 import "./ItemCost.css";
 import Card from "../UI/Card";
 import React, { useState } from "react";
+import Button from "./Button";
 
 const ItemCost = (props) => {
   const [description, setDescription] = useState(props.description);
@@ -24,7 +25,7 @@ const ItemCost = (props) => {
         <h2>{description}</h2>
         <div className="cost-item__price">{costTitle}</div>
       </div>
-      <button onClick={changeDescriptionHandler}>Изменить описание</button>
+      <Button onClick={changeDescriptionHandler}>Изменить описание</Button>
     </Card>
   );
 };

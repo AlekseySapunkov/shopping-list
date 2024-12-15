@@ -5,7 +5,6 @@ import Button from "./Button";
 
 const ItemCost = (props) => {
   const [description, setDescription] = useState(props.description);
-  console.log(props)
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
   const year = props.date.toLocaleString("ru-Ru", { year: "2-digit" });

@@ -18,7 +18,7 @@ app.listen(port, ()=>{
 })
 app.get('/items',(req, res)=>{
 
-    pool.query('SELECT item_name, date, price FROM shopping_list', (err, result)=>{
+    pool.query('SELECT id, item_name, date, price FROM shopping_list', (err, result)=>{
         if(err){
             console.error('error connecting to the database',err.stack)
         }else{

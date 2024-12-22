@@ -1,6 +1,7 @@
 import Button from "./Button";
 import "./CostForm.css"
 import React, {useState} from "react";
+import postApi from "../../services/PostApi";
 const CostForm = (props) => {
     const [description, setName] = useState('');
     const [amount, setAmount] = useState('');
@@ -16,8 +17,19 @@ const CostForm = (props) => {
     const dateChangeHandler =(event)=>{
         setDate(event.target.value)
     };
-    const submitHandler =(event)=>{
+    const apiData = {
+        item_name:description,
+        date,
+        price:amount
+    }
+    const submitHandler = async (event)=>{
         event.preventDefault();
+        try{
+            const apiResponse = await postApi(apiData);
+            console.log(apiResponse)
+        }catch(err){
+            console.error(error);
+        }
         const costData = {
             description:description,
             date: new Date(date),

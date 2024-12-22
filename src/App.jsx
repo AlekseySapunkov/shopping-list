@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
 const initialCosts = [
@@ -22,6 +22,15 @@ const initialCosts = [
   },
 ];
 const App = () => {
+  const getApi = async()=>{
+     const connectionResponse = await fetch("http://localhost:5200/items")
+     return connectionResponse.json() 
+  }
+useEffect(()=>{
+  getApi()
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+},[])
   const[costs,setCosts]=useState(initialCosts);
   const onAddCostHandler =(cost)=>{
     console.log(cost)

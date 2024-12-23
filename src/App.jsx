@@ -1,13 +1,9 @@
 import React,{useEffect, useState} from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
-
+import getApi from "./services/GetApi";
 const App = () => {
   let savedItems = []
-  const getApi = async()=>{
-     const connectionResponse = await fetch("http://localhost:5200/items")
-     return connectionResponse.json()
-  }
 useEffect(()=>{
   getApi()
   .then((res) => {
@@ -18,7 +14,6 @@ useEffect(()=>{
   })
   .catch((err) => console.log(err));
 },[])
-console.log(init)
 const[costs,setCosts]=useState(savedItems);
   const onAddCostHandler =(cost)=>{
     console.log(cost)

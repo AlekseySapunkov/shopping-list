@@ -40,3 +40,15 @@ app.post('/items',(req, resp)=>{
           };
     }  )
 })
+app.delete('/items/:id',(req, resp)=>{
+    const  id  = req.params.id;
+    pool.query('DELETE FROM shopping_list WHERE id=$1',[id],(err, result)=>{
+        if (err) {
+            resp.send({ express: 'Проблемы с сервером, пожалуйста повторите действие' , id})
+            return console.error(err.message);
+          } else {
+            console.log({ express: 'Ваш запрос выполнен' })
+            resp.send({ id })
+          };
+    }  )
+})

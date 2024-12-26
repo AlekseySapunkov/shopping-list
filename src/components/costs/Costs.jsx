@@ -18,8 +18,10 @@ const Costs = (props) => {
         <CostsDiagram costs ={filterProps(props)}/>
         {filterProps(props).length===0?<p>в массиве нет элементов</p>:
         filterProps(props).map((cost)=> 
+          
         <ItemCost
          key={cost.id}
+         id={cost.id}
         date={cost.date}
           description={cost.description}
           price={cost.price}/>)}

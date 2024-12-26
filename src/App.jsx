@@ -16,7 +16,6 @@ useEffect(()=>{
 },[])
 const[costs,setCosts]=useState(savedItems);
   const onAddCostHandler =(cost)=>{
-    console.log(cost)
     setCosts(prevCosts=>{
       return [cost,...prevCosts]
     });

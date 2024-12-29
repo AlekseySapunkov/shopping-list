@@ -1,5 +1,5 @@
 import axios from "axios";
-const PutApi = async (id,data) => {
+const putApi = async (id,data) => {
   try {
     const response = await axios.put(`http://localhost:5200/items/${id}`, data);
     return response.data
@@ -7,4 +7,4 @@ const PutApi = async (id,data) => {
     console.error(error);
   }
 }
-export default PutApi;
+export default putApi;

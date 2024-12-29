@@ -5,6 +5,7 @@ import postApi from "../../services/PostApi";
 import putApi from "../../services/PutApi";
 
 const CostForm = (props) => {
+    const id = props.id
     const [description, setName] = useState('');
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
@@ -60,6 +61,9 @@ const CostForm = (props) => {
         console.log(props)
         props.onSaveCost()
         console.log(formVisible)
+    }
+    const onClickChangeHandler = async() =>{
+        const response = await putApi(id, putDate)
     }
   
     return <form onSubmit={submitHandler}>

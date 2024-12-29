@@ -54,8 +54,8 @@ app.delete('/items/:id',(req, resp)=>{
 })
 app.put('/items/:id',(req, resp)=>{
     const  id  = req.params.id;
-    const data = req.body;
-    pool.query('DELETE FROM shopping_list WHERE id=$1',[id],(err, result)=>{
+    const {item_name, date, price} = req.body;
+    pool.query('UPDATE shopping_list SET item_name = $1, date = $2, price = $3 WHERE id=$4',[item_name, date, price,id],(err, result)=>{
         if (err) {
             resp.send({ express: 'Проблемы с сервером, пожалуйста повторите действие' , id})
             return console.error(err.message);

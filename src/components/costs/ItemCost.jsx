@@ -3,9 +3,11 @@ import Card from "../UI/Card";
 import React, { useState } from "react";
 import Button from "./Button";
 import deleteApiById from "../../services/DeleteApi";
+import CostForm from "./CostForm";
 
 const ItemCost = (props) => {
-  const [isItemDeleted, deletteItem] = useState(false)
+  const [isFormVisible, setFormVisible] = useState(false)
+  const [isItemDeleted, deleteItem] = useState(false)
   const [description, setDescription] = useState(props.description);
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
@@ -18,12 +20,15 @@ const ItemCost = (props) => {
   };
   const deleteItemHandler = async(event) => {
     event.preventDefault();
-    deletteItem(true)
+    deleteItem(true)
     try{
       const apiResponse = await deleteApiById(id);
       console.log(apiResponse)
   }catch(err){
       console.error(error);
+  }
+  const changeDescriptionHandler = (event) =>{
+    setFormVisible(true)
   }
 
   };
@@ -38,8 +43,8 @@ const ItemCost = (props) => {
         <h2>{description}</h2>
         <div className="cost-item__price">{costTitle}</div>
       </div>
-         <Button onClick={changeDescriptionHandler}>Изменить описание</Button> 
-         <Button onClick={deleteItemHandler}>Удалить</Button>
+        <Button type ="button" onClick= {changeDescriptionHandler} value = {id}>Изменить описание</Button>
+        <Button onClick={deleteItemHandler}>Удалить</Button>
   
     </Card>
   );

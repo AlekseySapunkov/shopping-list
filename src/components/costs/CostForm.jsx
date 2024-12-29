@@ -2,6 +2,8 @@ import Button from "./Button";
 import "./CostForm.css"
 import React, {useState} from "react";
 import postApi from "../../services/PostApi";
+import putApi from "../../services/PutApi";
+
 const CostForm = (props) => {
     const [description, setName] = useState('');
     const [amount, setAmount] = useState('');

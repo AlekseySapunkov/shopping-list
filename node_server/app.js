@@ -8,7 +8,6 @@ app.use(cors());
 pool.query("SELECT NOW()", (err, result) => {
   if (err) {
     console.error("error connecting to the database", err.stack);
-    console.log(process.env.DB_HOST);
   } else {
     console.log("Success connection to the database", result.rows);
   }

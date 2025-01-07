@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
 import getApi from "./services/GetApi";
+
 const App = () => {
   let savedItems = [];
   useEffect(() => {
     getApi()
       .then((res) => {
+        console.log(res);
         res.forEach((element) => {
           const { id, item_name: description, date, price } = element;
           savedItems.push({ id, description, date: new Date(date), price });

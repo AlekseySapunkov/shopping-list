@@ -1,5 +1,5 @@
-const getApi = async()=>{
-    const connectionResponse = await fetch("http://localhost:5200/items")
-    return connectionResponse.json()
- }
- export default getApi
+const getApi = async () => {
+  const connectionResponse = await fetch("http://localhost:5100/items");
+  return connectionResponse.json();
+};
+export default getApi;

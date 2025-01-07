@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("./config/database");
 const app = express();
 const cors = require("cors");
-const port = process.env.PORT || 5200;
+const port = process.env.PORT || 5100;
 app.use(express.json());
 app.use(cors());
 pool.query("SELECT NOW()", (err, result) => {

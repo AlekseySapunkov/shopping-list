@@ -22,7 +22,7 @@ app.get("/items", (req, res) => {
       if (err) {
         console.error("error connecting to the database", err.stack);
       } else {
-        console.log(result.rows);
+        console.log({ express: "Ваш запрос доставлен" });
         res.send(result.rows);
       }
     }

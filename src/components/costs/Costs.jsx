@@ -5,24 +5,28 @@ import CostsFilter from "./CostsFilter";
 import React, { useState } from "react";
 import CostsDiagram from "./CostsDiagram";
 const Costs = (props) => {
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2025");
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
-  const filterProps = (props) => {
-    return props.costs.filter(
-      (cost) => cost.date.getUTCFullYear().toString() === selectedYear
-    );
+  const filterAndSortProps = (props) => {
+    return props.costs
+      .filter((cost) => cost.date.getUTCFullYear().toString() === selectedYear)
+      .sort(
+        (cost1, cost2) =>
+          cost1.date.toLocaleString("ru-Ru", { day: "numeric" }) -
+          cost2.date.toLocaleString("ru-Ru", { day: "numeric" })
+      );
   };
   return (
     <div>
       <Card className="costs">
         <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
-        <CostsDiagram costs={filterProps(props)} />
-        {filterProps(props).length === 0 ? (
+        <CostsDiagram costs={filterAndSortProps(props)} />
+        {filterAndSortProps(props).length === 0 ? (
           <p>в массиве нет элементов</p>
         ) : (
-          filterProps(props).map((cost) => (
+          filterAndSortProps(props).map((cost) => (
             <ItemCost
               key={cost.id}
               id={cost.id}

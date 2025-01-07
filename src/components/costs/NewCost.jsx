@@ -1,42 +1,50 @@
-import "./NewCost.css"
-import CostForm  from "./CostForm"
-import React, {useState} from "react"
+import "./NewCost.css";
+import CostForm from "./CostForm";
+import React, { useState } from "react";
 import Button from "./Button";
 const NewCost = (props) => {
   const [value, setValue] = useState(props.value);
-  const [isFormVisible, setFormVisible] = useState(false)
-    console.log(props)
-    const onSaveCostHandler =(inputCostData=0)=>{
-      if(inputCostData ===0){
-        setValue(true);
-        setFormVisible(false);
-        return
-      }
-      const costData ={
-        ...inputCostData,
-        id: Math.random().toString(),
-      };
+  const [isFormVisible, setFormVisible] = useState(false);
+  console.log(props);
+  const onSaveCostHandler = (inputCostData = 0) => {
+    if (inputCostData === 0) {
       setValue(true);
       setFormVisible(false);
-      props.onAddCost(costData)
+      return;
     }
-    const cancelHandler =()=>{
-      setFormVisible(false)
-    }
-  const buttonClickHandler =(event)=>{
+    const costData = {
+      ...inputCostData,
+    };
+    setValue(true);
+    setFormVisible(false);
+    props.onAddCost(costData);
+  };
+  const cancelHandler = () => {
+    setFormVisible(false);
+  };
+  const buttonClickHandler = (event) => {
     event.target.value = false;
-    setValue(false)
-    setFormVisible(true)
-  }
-  if(value === true && isFormVisible === false){
-    return <div className="new-cost">
-  <Button type ="button" onClick={buttonClickHandler} value = {value}>Добавить новый расход</Button>
-</div>
-}else{
-  return <div className="new-cost">
-      <CostForm onSaveCost={onSaveCostHandler} costFormValue={cancelHandler}></CostForm>
+    setValue(false);
+    setFormVisible(true);
+  };
+  if (value === true && isFormVisible === false) {
+    return (
+      <div className="new-cost">
+        <Button type="button" onClick={buttonClickHandler} value={value}>
+          Добавить новый расход
+        </Button>
       </div>
+    );
+  } else {
+    return (
+      <div className="new-cost">
+        <CostForm
+          onSaveCost={onSaveCostHandler}
+          costFormValue={cancelHandler}
+        ></CostForm>
+      </div>
+    );
   }
-}
+};
 
-export default NewCost
+export default NewCost;

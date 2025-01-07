@@ -9,23 +9,29 @@ const Costs = (props) => {
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
-  const filterProps= (props)=>{
-   return  props.costs.filter((cost)=>cost.date.getUTCFullYear().toString()===selectedYear)}
+  const filterProps = (props) => {
+    return props.costs.filter(
+      (cost) => cost.date.getUTCFullYear().toString() === selectedYear
+    );
+  };
   return (
     <div>
       <Card className="costs">
         <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
-        <CostsDiagram costs ={filterProps(props)}/>
-        {filterProps(props).length===0?<p>в массиве нет элементов</p>:
-        filterProps(props).map((cost)=> 
-          
-        <ItemCost
-         key={cost.id}
-         id={cost.id}
-        date={cost.date}
-          description={cost.description}
-          price={cost.price}/>)}
-        
+        <CostsDiagram costs={filterProps(props)} />
+        {filterProps(props).length === 0 ? (
+          <p>в массиве нет элементов</p>
+        ) : (
+          filterProps(props).map((cost) => (
+            <ItemCost
+              key={cost.id}
+              id={cost.id}
+              date={cost.date}
+              description={cost.description}
+              price={cost.price}
+            />
+          ))
+        )}
       </Card>
     </div>
   );

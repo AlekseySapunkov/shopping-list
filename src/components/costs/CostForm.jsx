@@ -9,7 +9,6 @@ const CostForm = (props) => {
   const [description, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
-  const [formVisible, setFormVisible] = useState(props.CostFormValue);
   const [isInputValid, setInputValid] = useState(true);
   const nameChangeHandler = (event) => {
     setName(event.target.value);
@@ -57,10 +56,7 @@ const CostForm = (props) => {
     setAmount("");
   };
   const onClickCancelHandler = () => {
-    setFormVisible(false);
-    console.log(props);
-    props.onSaveCost();
-    console.log(formVisible);
+    props.costFormValue();
   };
   const onClickChangeHandler = async () => {
     const response = await putApi(id, putDate);

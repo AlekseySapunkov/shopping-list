@@ -9,6 +9,9 @@ const Costs = (props) => {
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
+  const changeDescription = () => {
+    props.onCostChanging();
+  };
   const filterAndSortProps = (props) => {
     return props.costs
       .filter((cost) => cost.date.getUTCFullYear().toString() === selectedYear)
@@ -33,6 +36,7 @@ const Costs = (props) => {
               date={cost.date}
               description={cost.description}
               price={cost.price}
+              changeOnClick={changeDescription}
             />
           ))
         )}

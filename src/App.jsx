@@ -6,6 +6,7 @@ import useFetch from "./services/useFetch";
 const App = () => {
   const { savedItems, error } = useFetch();
   const [costs, setCosts] = useState([]);
+  const [costIsNotChanging, setCostChanging] = useState(true);
   useEffect(() => {
     setCosts(savedItems);
   }, [savedItems]);
@@ -13,11 +14,15 @@ const App = () => {
     setCosts((prevCosts) => {
       return [cost, ...prevCosts];
     });
+    setCostChanging(true);
+  };
+  const onCostChangingHandler = () => {
+    setCostChanging(false);
   };
   return (
     <div>
-      <NewCost onAddCost={onAddCostHandler} value={true} />
-      <Costs costs={costs} />
+      <NewCost onAddCost={onAddCostHandler} value={costIsNotChanging} />
+      <Costs onCostChanging={onCostChangingHandler} costs={costs} />
     </div>
   );
 };

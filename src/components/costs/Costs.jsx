@@ -9,8 +9,8 @@ const Costs = (props) => {
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
-  const changeDescription = () => {
-    props.onCostChanging();
+  const changeDescription = (data) => {
+    props.onCostChanging(data);
   };
   const filterAndSortProps = (props) => {
     return props.costs

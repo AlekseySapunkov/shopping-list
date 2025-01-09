@@ -22,8 +22,14 @@ const ItemCost = (props) => {
       console.error(error);
     }
   };
-  const changeDescriptionHandler = (event) => {
-    props.changeOnClick();
+  const changeDescriptionHandler = () => {
+    const data ={
+      id,
+      amount:props.price,
+      date:props.date,
+      description
+    }
+    props.changeOnClick(data);
   };
   return (
     !isItemDeleted && (

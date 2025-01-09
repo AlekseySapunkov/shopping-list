@@ -1,14 +1,14 @@
 import Button from "./Button";
 import "./CostForm.css";
-import React, { useState } from "react";
+import  { useState } from "react";
 import postApi from "../../services/PostApi";
 import putApi from "../../services/PutApi";
 
 const CostForm = (props) => {
-  const id = props.id;
-  const [description, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
+  const [id, setId] = useState(props.data.id);
+  const [description, setName] = useState(props.data.description);
+  const [amount, setAmount] = useState(props.data.amount);
+  const [date, setDate] = useState(props.data.date);
   const [isInputValid, setInputValid] = useState(true);
   const nameChangeHandler = (event) => {
     setName(event.target.value);
@@ -56,6 +56,10 @@ const CostForm = (props) => {
     setAmount("");
   };
   const onClickCancelHandler = () => {
+    setId('')
+    setName("");
+    setDate("");
+    setAmount("");
     props.costFormValue();
   };
   const onClickChangeHandler = async () => {

@@ -41,7 +41,6 @@ const NewCost = (props) => {
     console.log(props.value);
     setFormVisible(true);
   };
-
   return (
     <div className="new-cost">
       {!isFormVisible ? (
@@ -50,8 +49,10 @@ const NewCost = (props) => {
         </Button>
       ) : (
         <CostForm
+          data={props.data}
           onSaveCost={onSaveCostHandler}
           costFormValue={cancelHandler}
+
         />
       )}
     </div>

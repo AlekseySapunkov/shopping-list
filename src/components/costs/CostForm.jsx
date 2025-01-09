@@ -8,8 +8,9 @@ const CostForm = (props) => {
   const [id, setId] = useState(props.data.id);
   const [description, setName] = useState(props.data.description);
   const [amount, setAmount] = useState(props.data.amount);
-  const [date, setDate] = useState(props.data.date);
+  const [date, setDate] = useState(props.data.date.toLocaleString("ru-Ru", { day: 'numeric', month: 'numeric', year: 'numeric' }));
   const [isInputValid, setInputValid] = useState(true);
+  console.log(date)
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };

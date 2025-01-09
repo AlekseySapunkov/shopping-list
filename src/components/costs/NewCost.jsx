@@ -1,6 +1,6 @@
 import "./NewCost.css";
 import CostForm from "./CostForm";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Button from "./Button";
 
 const NewCost = (props) => {

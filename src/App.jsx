@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
 import useFetch from "./services/useFetch";

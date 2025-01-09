@@ -8,9 +8,8 @@ const CostForm = (props) => {
   const [id, setId] = useState(props.data.id);
   const [description, setName] = useState(props.data.description);
   const [amount, setAmount] = useState(props.data.amount);
-  const [date, setDate] = useState(props.data.date.toLocaleString("ru-Ru", { day: 'numeric', month: 'numeric', year: 'numeric' }));
+  const [date, setDate] = useState(props.data.date);
   const [isInputValid, setInputValid] = useState(true);
-  console.log(date)
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
@@ -25,6 +24,11 @@ const CostForm = (props) => {
     date,
     price: amount,
   };
+  const costData = {
+    description: description,
+    date: new Date(date),
+    price: amount,
+  };
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
@@ -33,11 +37,6 @@ const CostForm = (props) => {
     } catch (err) {
       console.error(error);
     }
-    const costData = {
-      description: description,
-      date: new Date(date),
-      price: amount,
-    };
     console.log(costData);
     if (event.target.value > 0) {
       setInputValid(true);
@@ -51,6 +50,7 @@ const CostForm = (props) => {
       setInputValid(false);
       return;
     }
+    
     props.onSaveCost(costData);
     setName("");
     setDate("");
@@ -64,7 +64,12 @@ const CostForm = (props) => {
     props.costFormValue();
   };
   const onClickChangeHandler = async () => {
-    const response = await putApi(id, putDate);
+    const response = await putApi(id, apiData);
+    props.onSaveCost(costData);
+    setName("");
+    setDate("");
+    setAmount("");
+    console.log(response)
   };
 
   return (

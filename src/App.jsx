@@ -6,6 +6,7 @@ import useFetch from "./services/useFetch";
 const App = () => {
   const { savedItems, error } = useFetch();
   const [costs, setCosts] = useState([]);
+  console.log(costs)
   const [data, setData] = useState({
     id:'',
     amount:'',

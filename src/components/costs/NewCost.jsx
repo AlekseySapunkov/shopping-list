@@ -33,6 +33,7 @@ const NewCost = (props) => {
 
   const cancelHandler = () => {
     setFormVisible(false);
+    props.onCancelHandler();
     console.log(props.value);
   };
 

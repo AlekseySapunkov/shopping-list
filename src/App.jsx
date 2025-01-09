@@ -19,9 +19,12 @@ const App = () => {
   const onCostChangingHandler = () => {
     setCostChanging(false);
   };
+  const changeValue =()=>{
+    setCostChanging(true)
+  }
   return (
     <div>
-      <NewCost onAddCost={onAddCostHandler} value={costIsNotChanging} />
+      <NewCost onCancelHandler={changeValue}onAddCost={onAddCostHandler} value={costIsNotChanging} />
       <Costs onCostChanging={onCostChangingHandler} costs={costs} />
     </div>
   );

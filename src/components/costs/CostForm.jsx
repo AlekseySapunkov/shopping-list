@@ -1,6 +1,6 @@
 import Button from "./Button";
 import "./CostForm.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import postApi from "../../services/PostApi";
 import putApi from "../../services/PutApi";
 
@@ -10,6 +10,17 @@ const CostForm = (props) => {
   const [amount, setAmount] = useState(props.data.amount);
   const [date, setDate] = useState(props.data.date);
   const [isInputValid, setInputValid] = useState(true);
+  const [isButtonSubmitVisible, setButtonSubmitVisibility] = useState(true);
+  const [isButtonChangeVisible, setButtonChangeVisibility] = useState(false);
+  useEffect(() => {
+    if (id !== "") {
+      setButtonSubmitVisibility(false);
+      setButtonChangeVisibility(true);
+    } else {
+      setButtonSubmitVisibility(true);
+      setButtonChangeVisibility(false);
+    }
+  }, [id]);
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
@@ -101,10 +112,14 @@ const CostForm = (props) => {
           />
         </div>
         <div className="new-cost__actions">
-          <Button type="submit">Добавить расход</Button>
-          <Button type="button" onClick={onClickChangeHandler}>
-            Внести изменения
-          </Button>
+          {isButtonSubmitVisible && (
+            <Button type="submit">Добавить расход</Button>
+          )}
+          {isButtonChangeVisible && (
+            <Button type="button" onClick={onClickChangeHandler}>
+              Внести изменения
+            </Button>
+          )}
           <Button type="button" onClick={onClickCancelHandler}>
             отмена
           </Button>

@@ -65,7 +65,6 @@ const CostForm = (props) => {
     setName("");
     setDate("");
     setAmount("");
-    console.log(response);
   };
 
   return (

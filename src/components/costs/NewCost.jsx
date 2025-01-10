@@ -1,6 +1,6 @@
 import "./NewCost.css";
 import CostForm from "./CostForm";
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 
 const NewCost = (props) => {
@@ -33,12 +33,12 @@ const NewCost = (props) => {
 
   const cancelHandler = () => {
     setFormVisible(false);
+    props.resetData();
     props.onCancelHandler();
-    console.log(props.value);
   };
 
   const buttonClickHandler = () => {
-    console.log(props.value);
+    props.resetData();
     setFormVisible(true);
   };
   return (
@@ -52,7 +52,6 @@ const NewCost = (props) => {
           data={props.data}
           onSaveCost={onSaveCostHandler}
           costFormValue={cancelHandler}
-
         />
       )}
     </div>

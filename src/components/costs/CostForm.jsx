@@ -1,6 +1,6 @@
 import Button from "./Button";
 import "./CostForm.css";
-import  { useState } from "react";
+import { useState } from "react";
 import postApi from "../../services/PostApi";
 import putApi from "../../services/PutApi";
 
@@ -50,17 +50,13 @@ const CostForm = (props) => {
       setInputValid(false);
       return;
     }
-    
+
     props.onSaveCost(costData);
     setName("");
     setDate("");
     setAmount("");
   };
   const onClickCancelHandler = () => {
-    setId('')
-    setName("");
-    setDate("");
-    setAmount("");
     props.costFormValue();
   };
   const onClickChangeHandler = async () => {
@@ -69,7 +65,7 @@ const CostForm = (props) => {
     setName("");
     setDate("");
     setAmount("");
-    console.log(response)
+    console.log(response);
   };
 
   return (

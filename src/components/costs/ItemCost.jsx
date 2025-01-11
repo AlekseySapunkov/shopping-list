@@ -23,12 +23,12 @@ const ItemCost = (props) => {
     }
   };
   const changeDescriptionHandler = () => {
-    const data ={
+    const data = {
       id,
-      amount:props.price,
-      date:props.date,
-      description
-    }
+      amount: props.price,
+      date: props.date,
+      description,
+    };
     props.changeOnClick(data);
   };
   return (

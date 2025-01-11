@@ -19,7 +19,8 @@ const App = () => {
   }, [savedItems]);
   const onAddCostHandler = (cost) => {
     setCosts((prevCosts) => {
-      return [cost, ...prevCosts];
+      const filteredCosts = prevCosts.filter((elem) => elem.id !== cost.id);
+      return [cost, ...filteredCosts];
     });
     setCostChanging(true);
   };

@@ -36,6 +36,7 @@ const CostForm = (props) => {
     price: amount,
   };
   const costData = {
+    id: id,
     description: description,
     date: new Date(date),
     price: amount,

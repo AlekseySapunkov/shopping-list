@@ -14,7 +14,6 @@ const NewCost = (props) => {
       setFormVisible(true);
     }
     // Reset form visibility when value changes
-    console.log(props.value);
   }, [props.value]);
 
   const onSaveCostHandler = (inputCostData) => {

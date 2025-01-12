@@ -54,7 +54,7 @@ const CostForm = (props) => {
       const response = await postApi(apiData);
       props.onSaveCost(response);
     } catch (err) {
-      console.error(error);
+      console.error(err);
     }
     setName("");
     setDate("");
@@ -64,8 +64,13 @@ const CostForm = (props) => {
     props.costFormValue();
   };
   const onClickChangeHandler = async () => {
-    const response = await putApi(id, apiData);
+    try{
+      const response = await putApi(id, apiData);
     props.onSaveCost(response);
+    }catch(err){
+      console.error(err)
+    }
+
     setName("");
     setDate("");
     setAmount("");

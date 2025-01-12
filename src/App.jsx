@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
-import useFetch from "./services/useFetch";
+import useFetch from "./components/hooks/useFetch";
 
 const App = () => {
   const { savedItems, error } = useFetch();

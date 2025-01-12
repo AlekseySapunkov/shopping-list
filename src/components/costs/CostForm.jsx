@@ -51,8 +51,8 @@ const CostForm = (props) => {
       return;
     }
     try {
-      const apiResponse = await postApi(apiData);
-      props.onSaveCost(apiResponse);
+      const response = await postApi(apiData);
+      props.onSaveCost(response);
     } catch (err) {
       console.error(error);
     }

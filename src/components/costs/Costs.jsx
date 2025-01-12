@@ -2,7 +2,7 @@ import ItemCost from "./ItemCost";
 import "./costs.css";
 import Card from "../UI/Card";
 import CostsFilter from "./CostsFilter";
-import React, { useState } from "react";
+import { useState } from "react";
 import CostsDiagram from "./CostsDiagram";
 const Costs = (props) => {
   const [selectedYear, setSelectedYear] = useState("2025");

@@ -43,6 +43,11 @@ const App = () => {
       date: "",
     });
   };
+  if(error){
+    return (
+      <div><p>503 Service unavailable</p></div>
+    )
+  }
   return (
     <div>
       <NewCost

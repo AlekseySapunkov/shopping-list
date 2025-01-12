@@ -66,7 +66,7 @@ const CostForm = (props) => {
   const onClickChangeHandler = async () => {
     try{
       const response = await putApi(id, apiData);
-    props.onSaveCost(response);
+      props.onSaveCost(response);
     }catch(err){
       console.error(err)
     }

@@ -41,7 +41,8 @@ app.post("/items", (req, resp) => {
         return console.error(err.message);
       } else {
         console.log({ express: "Ваш запрос доставлен" });
-        resp.send({ item_name, date, price });
+        const resultFirstElement = result.rows[0]
+        resp.send(resultFirstElement);
       }
     }
   );
@@ -76,7 +77,7 @@ app.put("/items/:id", (req, resp) => {
         return console.error(err.message);
       } else {
         console.log({ express: "Ваш запрос выполнен" });
-        resp.send({ id });
+        resp.send({ item_name, date, price, id });
       }
     }
   );

@@ -6,7 +6,13 @@ const postApi = async (data) => {
         "Content-Type": "application/json",
       },
     });
-    return response.data;
+    const costData = {
+      id: response.data.id,
+      description: response.data.item_name,
+      date: new Date(response.data.date),
+      price: response.data.price,
+    };
+    return costData;
   } catch (error) {
     console.error(error);
   }

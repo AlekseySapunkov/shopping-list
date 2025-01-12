@@ -36,21 +36,8 @@ const CostForm = (props) => {
     date,
     price: amount,
   };
-  const costData = {
-    id: id,
-    description: description,
-    date: new Date(date),
-    price: amount,
-  };
   const submitHandler = async (event) => {
     event.preventDefault();
-    try {
-      const apiResponse = await postApi(apiData);
-      console.log(apiResponse);
-    } catch (err) {
-      console.error(error);
-    }
-    console.log(costData);
     if (event.target.value > 0) {
       setInputValid(true);
     }
@@ -63,8 +50,12 @@ const CostForm = (props) => {
       setInputValid(false);
       return;
     }
-
-    props.onSaveCost(costData);
+    try {
+      const apiResponse = await postApi(apiData);
+      props.onSaveCost(apiResponse);
+    } catch (err) {
+      console.error(error);
+    }
     setName("");
     setDate("");
     setAmount("");
@@ -74,7 +65,7 @@ const CostForm = (props) => {
   };
   const onClickChangeHandler = async () => {
     const response = await putApi(id, apiData);
-    props.onSaveCost(costData);
+    props.onSaveCost(response);
     setName("");
     setDate("");
     setAmount("");

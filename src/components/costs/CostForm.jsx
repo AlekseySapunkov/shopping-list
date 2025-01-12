@@ -16,11 +16,12 @@ const CostForm = (props) => {
     if (id !== "") {
       setButtonSubmitVisibility(false);
       setButtonChangeVisibility(true);
+      setDate(props.data.date.toJSON().split('T')[0])
     } else {
       setButtonSubmitVisibility(true);
       setButtonChangeVisibility(false);
     }
-  }, [id]);
+  }, [id,props.data.date]);
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };

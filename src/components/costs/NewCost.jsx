@@ -25,7 +25,6 @@ const NewCost = (props) => {
     const costData = {
       ...inputCostData,
     };
-
     setFormVisible(false);
     props.onAddCost(costData);
   };

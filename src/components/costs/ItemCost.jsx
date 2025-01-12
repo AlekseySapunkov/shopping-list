@@ -1,12 +1,12 @@
 import "./ItemCost.css";
 import Card from "../UI/Card";
-import React, { useState } from "react";
+import  { useState } from "react";
 import Button from "./Button";
 import deleteApiById from "../../services/DeleteApi";
 
 const ItemCost = (props) => {
   const [isItemDeleted, deleteItem] = useState(false);
-  const [description, setDescription] = useState(props.description);
+  const description = props.description;
   const month = props.date.toLocaleString("ru-Ru", { month: "long" });
   const day = props.date.toLocaleString("ru-Ru", { day: "numeric" });
   const year = props.date.toLocaleString("ru-Ru", { year: "2-digit" });

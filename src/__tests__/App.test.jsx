@@ -1,4 +1,8 @@
+import { render } from "@testing-library/react";
+import App from "./App";
 
-test('app', ()=>{
-    expect(true).toBe(true);
-})
+describe("App component", () => {
+  test("it renders", () => {
+    render(<App />);
+  });
+});

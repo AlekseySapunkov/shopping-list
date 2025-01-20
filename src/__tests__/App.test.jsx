@@ -4,6 +4,6 @@ import App from "../App";
 describe("App component", () => {
   test("it renders", () => {
     render(<App />);
-    expect(screen.getByText('Users:')).toBeInTheDocument();
+    expect(screen.getByText("Users:")).toBeInTheDocument();
   });
 });

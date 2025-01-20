@@ -3,6 +3,6 @@ export default {
   extensionsToTreatAsEsm: [".jsx"],
   transform: {
     "\\.[jt]sx?$": "babel-jest",
-    "^.+\\.css$": "jest-transform-css",
+    ".+\\.(css|scss)$": "jest-css-modules-transform"
   },
 };

@@ -1,7 +1,5 @@
-import styled from "styled-components";
-
-const Button = styled.button`
-
+.button{
+    
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
@@ -16,5 +14,4 @@ const Button = styled.button`
     background-color: #2a5c84b2;
     border-color: #2a5c84b2;
   }
-`
-export default Button
+}

@@ -1,9 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../App";
 
 describe("App component", () => {
-  test("it renders", () => {
+  test("it updates the input value", () => {
     render(<App />);
-    expect(screen.getByText("Users:")).toBeInTheDocument();
+    const input = screen.getByLabelText("Выбор По Году");
+    fireEvent.change(input, { target: { value: '2023' } });
+    expect(input.value).toBe('2023');
   });
 });

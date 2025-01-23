@@ -7,8 +7,8 @@ const CostsFilter = (props) => {
   return (
     <div className="costs-filter">
       <div className="costs-filter__control">
-        <label>Выбор По Году</label>
-        <select value={props.year} onChange={yearChangeHandler}>
+        <label htmlFor="dropdown-choice-year">Выбор По Году</label>
+        <select id="dropdown-choice-year" value={props.year} onChange={yearChangeHandler}>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
           <option value="2021">2021</option>

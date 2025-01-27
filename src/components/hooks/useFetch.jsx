@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = () => {
-  const [savedItems, setSavedItems] = useState([]);
+const useFetch = (arg) => {
+  const [savedItems, setSavedItems] = useState(arg);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const useFetch = () => {
     fetchData();
   }, []);
 
-  return { savedItems, error };
+  return { savedItems, error, setSavedItems };
 };
 
 export default useFetch;

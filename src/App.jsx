@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
 import useFetch from "./components/hooks/useFetch";
 
 const App = () => {
-  const { savedItems, error } = useFetch();
-  const [costs, setCosts] = useState([]);
+  const { savedItems, error, setSavedItems } = useFetch([]);
   const [data, setData] = useState({
     id: "",
     amount: "",
@@ -13,11 +12,9 @@ const App = () => {
     date: "",
   });
   const [costIsNotChanging, setCostChanging] = useState(true);
-  useEffect(() => {
-    setCosts(savedItems);
-  }, [savedItems]);
+
   const onAddCostHandler = (cost) => {
-    setCosts((prevCosts) => {
+    setSavedItems((prevCosts) => {
       const filteredCosts = prevCosts.filter((elem) => elem.id !== cost.id);
       return [cost, ...filteredCosts];
     });
@@ -57,7 +54,7 @@ const App = () => {
         onAddCost={onAddCostHandler}
         value={costIsNotChanging}
       />
-      <Costs onCostChanging={changeDataHandler} costs={costs} />
+      <Costs onCostChanging={changeDataHandler} costs={savedItems} />
     </div>
   );
 };

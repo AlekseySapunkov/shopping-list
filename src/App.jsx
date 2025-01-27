@@ -2,19 +2,22 @@ import {  useState } from "react";
 import Costs from "./components/costs/Costs";
 import NewCost from "./components/costs/NewCost";
 import useFetch from "./components/hooks/useFetch";
+import useData from "./components/hooks/useData";
 
 const App = () => {
-  const { savedItems, error, setSavedItems } = useFetch([]);
-  const [data, setData] = useState({
-    id: "",
-    amount: "",
-    description: "",
-    date: "",
-  });
+  const originData= {
+      id: "",
+      amount: "",
+      description: "",
+      date: "",
+  }
+  const { items, error, setItems } = useFetch([]);
+  const [item, setItem] = useData(originData)
   const [costIsNotChanging, setCostChanging] = useState(true);
 
   const onAddCostHandler = (cost) => {
-    setSavedItems((prevCosts) => {
+    setItem(originData)
+    setItems((prevCosts) => {
       const filteredCosts = prevCosts.filter((elem) => elem.id !== cost.id);
       return [cost, ...filteredCosts];
     });
@@ -22,23 +25,13 @@ const App = () => {
   };
   const changeDataHandler = (data) => {
     setCostChanging(false);
-    setData({
-      id: data.id,
-      amount: data.amount,
-      description: data.description,
-      date: data.date,
-    });
+    setItem(data);
   };
   const changeValue = () => {
     setCostChanging(true);
   };
   const resetDataHandler = () => {
-    setData({
-      id: "",
-      amount: "",
-      description: "",
-      date: "",
-    });
+    setItem(originData);
   };
   if(error){
     return (
@@ -49,12 +42,12 @@ const App = () => {
     <div>
       <NewCost
         resetData={resetDataHandler}
-        data={data}
+        data={item}
         onCancelHandler={changeValue}
         onAddCost={onAddCostHandler}
         value={costIsNotChanging}
       />
-      <Costs onCostChanging={changeDataHandler} costs={savedItems} />
+      <Costs onCostChanging={changeDataHandler} costs={items} />
     </div>
   );
 };

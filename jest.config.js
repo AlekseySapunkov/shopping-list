@@ -1,8 +1,9 @@
+import axios from "axios";
 export default {
   testEnvironment: "jest-environment-jsdom",
   extensionsToTreatAsEsm: [".jsx"],
   globals: {
-    axios: require("axios"),
+    axios: axios,
    },
   transform: {
     "\\.[jt]sx?$": "babel-jest",

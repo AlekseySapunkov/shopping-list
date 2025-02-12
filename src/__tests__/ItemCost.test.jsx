@@ -9,6 +9,8 @@ describe("ItemCost component", () => {
       price: 35,
     };
     const { container } = render(<ItemCost key={10} {...props} />);
-    expect(container.getElementsByClassName("cost-date__day")).toBe(25);
+    expect(
+      container.getElementsByClassName("cost-date__day")[0].textContent
+    ).toBe("25");
   });
 });

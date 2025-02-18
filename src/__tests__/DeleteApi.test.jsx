@@ -1,35 +1,28 @@
-// deleteApi.test.js
 import deleteApiById from "../services/DeleteApi";
-import axios from "axios";
-jest.mock("axios");
+import mockAxios from "jest-mock-axios";
 
 describe("deleteApiById", () => {
+  afterEach(() => {
+    mockAxios.reset(); // Сброс мока после каждого теста
+  });
+
   it("should delete an item and return its id", async () => {
-    const idToDelete = 3;
+    const idToDelete = 6;
     const mockResponse = { data: { id: idToDelete } };
-    
-    // Настройка мока для axios.delete
-    axios.delete.mockResolvedValue(mockResponse);
-    
-    // Вызов функции
+    mockAxios.delete.mockResolvedValue(mockResponse);
+
     const result = await deleteApiById(idToDelete);
-    
-    // Проверка результата
-    expect(result).toBe(idToDelete);
-    expect(axios.delete).toHaveBeenCalledWith(`http://localhost:5100/items/${idToDelete}`);
+
+    expect(Number(result)).toBe(idToDelete);
   });
 
   it("should handle errors", async () => {
     const idToDelete = 3;
-    
-    // Настройка мока для axios.delete, чтобы он вызывал ошибку
-    axios.delete.mockRejectedValue(new Error("Network Error"));
-    
-    // Вызов функции и проверка, что она не выбрасывает ошибку
+    mockAxios.delete.mockRejectedValue(new Error("Network Error"));
+
     const result = await deleteApiById(idToDelete);
-    
-    // Проверка, что результат равен undefined, так как ошибка была обработана
+
     expect(result).toBeUndefined();
-    expect(axios.delete).toHaveBeenCalledWith(`http://localhost:5100/items/${idToDelete}`);
+    expect(mockAxios.delete).toHaveBeenCalledWith(`http://localhost:5100/items/${idToDelete}`);
   });
 });

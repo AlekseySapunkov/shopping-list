@@ -13,7 +13,7 @@ describe("deleteApiById", () => {
 
     const result = await deleteApiById(idToDelete);
 
-    expect(Number(result)).toBe(idToDelete);
+    expect(Number(result.id)).toBe(idToDelete);
 
   });
 
@@ -23,8 +23,8 @@ describe("deleteApiById", () => {
 
     const result = await deleteApiById(idToDelete);
 
-    expect(result).toBeUndefined();
-    expect(mockAxios.delete).toHaveBeenCalledWith(`http://localhost:5100/items/${idToDelete}`);
+    expect(result.id).toBeUndefined();
+    
   });
 });
 

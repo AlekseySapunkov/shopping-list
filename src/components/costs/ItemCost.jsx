@@ -17,9 +17,9 @@ const ItemCost = (props) => {
     deleteItem(true);
     try {
       const apiResponse = await deleteApiById(id);
-      console.log(apiResponse);
+      console.log(apiResponse.express);
     } catch (err) {
-      console.error(error);
+      console.error(err);
     }
   };
   const changeDescriptionHandler = () => {

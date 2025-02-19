@@ -58,7 +58,7 @@ app.delete("/items/:id", (req, resp) => {
       return console.error(err.message);
     } else {
       console.log({ express: "Ваш запрос выполнен" });
-      resp.send({ id });
+      resp.send({ id,express: "Ваш запрос выполнен" });
     }
   });
 });

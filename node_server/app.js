@@ -53,7 +53,7 @@ app.delete("/items/:id", (req, resp) => {
     if (err) {
       resp.send({
         express: "Проблемы с сервером, пожалуйста повторите действие",
-        id,
+        id:undefined,
       });
       return console.error(err.message);
     } else {

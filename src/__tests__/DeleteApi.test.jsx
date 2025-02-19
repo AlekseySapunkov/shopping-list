@@ -14,10 +14,11 @@ describe("deleteApiById", () => {
     const result = await deleteApiById(idToDelete);
 
     expect(Number(result)).toBe(idToDelete);
+
   });
 
   it("should handle errors", async () => {
-    const idToDelete = 3;
+    const idToDelete = "three";
     mockAxios.delete.mockRejectedValue(new Error("Network Error"));
 
     const result = await deleteApiById(idToDelete);
